@@ -19,6 +19,8 @@ forever start ~/c9sdk/server.js -w ~/ --auth user:pass --collab -l 8181
 # L
 ## Latex-texlive
 
+[Overleaf official guide](https://github.com/overleaf/overleaf/wiki/Quick-Start-Guide)
+
 ### overleaf docker
 
 ```
@@ -42,4 +44,10 @@ wget http://mirror.ctan.org/systems/texlive/tlnet/update-tlmgr-latest.sh
 sh update-tlmgr-latest.sh -- --upgrade 
 tlmgr update --self --all 
 luaotfload-tool -fu 
+```
+
+### install full texlive 
+
+```
+docker exec sharelatex tlmgr install scheme-full
 ```
