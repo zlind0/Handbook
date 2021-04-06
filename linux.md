@@ -52,3 +52,9 @@ luaotfload-tool -fu
 docker exec sharelatex tlmgr install scheme-full
 docker commit sharelatex sharelatex/sharelatex:with-texlive-full
 ```
+
+### add user
+
+```
+docker exec sharelatex /bin/bash -c "cd /var/www/sharelatex; grunt user:create-admin --email=example@example.com"
+```
