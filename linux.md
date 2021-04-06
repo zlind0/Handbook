@@ -1,3 +1,19 @@
+# C
+## Cloud 9
+### install
+```
+npm install forever
+git clone https://github.com/c9/core.git ~/c9sdk
+cd c9sdk
+scripts/install-sdk.sh
+```
+
+### run
+
+```
+forever start ~/c9sdk/server.js -w ~/ --auth user:pass --collab -l 8181
+```
+
 # D
 
 # L
