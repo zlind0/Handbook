@@ -50,4 +50,5 @@ luaotfload-tool -fu
 
 ```
 docker exec sharelatex tlmgr install scheme-full
+docker commit sharelatex sharelatex/sharelatex:with-texlive-full
 ```
