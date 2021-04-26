@@ -96,6 +96,7 @@ make $MAKEFLAGS
 sudo make install
 
 cd $VS_INSTALL_DIR
+rm ImageMagick.tar.gz
 wget https://www.imagemagick.org/download/ImageMagick.tar.gz
 tar xvzf ImageMagick.tar.gz
 cd ImageMagick*/
