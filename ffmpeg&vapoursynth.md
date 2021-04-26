@@ -110,6 +110,13 @@ cd vapoursynth
 make $MAKEFLAGS
 sudo make install
 sudo ldconfig
+
+cd $VS_INSTALL_DIR
+git -C vapoursynth-plugins pull || git clone https://github.com/darealshinji/vapoursynth-plugins.git
+./autogen.sh
+./configure
+make $MAKEFLAGS
+sudo make install 
 ```
 
 ## build x264 on Ubuntu20.04
@@ -142,3 +149,69 @@ export MAKEFLAGS=-j
 ./multilib.sh
 sudo ln -s $PWD/8bit/x265 /usr/local/bin/x265
 ```
+
+## transcode x264
+
+```
+
+function pthvspipe {
+
+while [[ $# -gt 0 ]]
+do
+key="$1"
+
+case $key in
+    -i|--in)
+    SRC="$2"
+    shift
+    shift
+    ;;
+    -10|--10bit)
+    HIBIT="src = core.fmtc.bitdepth (src, bits=10)"
+    shift
+    ;;
+    --test)
+    TEST=$(cat <<!
+import awsmfunc as awsf
+src = awsf.SelectRangeEvery(clip=src, every=3000, length=50, offset=10000)
+!
+)
+    shift
+    ;;
+    --extra)
+    EXTRA="$2"
+    shift
+    shift
+    ;;
+    *)
+    POSITIONAL+=("$1")
+    shift 
+    ;;
+esac
+done
+
+if [ -n $SRC ]; then
+    >&2 echo "Usage: pthvspipe -i <SOURCE_MKV>     | x264"
+    >&2 echo "       pthvspipe -i <SOURCE_MKV> -10 | x265"
+    >&2 echo "Other args:"
+    >&2 echo "    -t    Pick some parts for testing."
+else
+    VPY=$RANDOM.vpy
+    cat <<! >/tmp/$VPY
+import vapoursynth as vs
+import havsfunc as haf
+import mvsfunc as mvf
+from vapoursynth import core
+core.num_threads = 2
+core.max_cache_size = 2000
+src = core.lsmas.LWLibavSource(source=r"$SRC",fpsnum=0,fpsden=1,decoder="")
+src = core.std.CropRel(src,left=$CROP_X,right=$CROP_X,top=$CROP_Y,bottom=$CROP_Y)
+$TEST
+$HIBIT
+src.set_output()
+!
+    vspipe /tmp/$VPY --y4m
+fi
+}
+```
+
