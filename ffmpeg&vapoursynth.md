@@ -76,7 +76,7 @@ Bash script:
 
 ```
 sudo apt install -y autoconf build-essential libtool python3.8-dev cython3
-VS_INSTALL_DIR=$HOME/.installs
+export VS_INSTALL_DIR=$HOME/.installs
 export MAKEFLAGS=-j
 mkdir -p $VS_INSTALL_DIR
 
@@ -104,6 +104,7 @@ cd ImageMagick*/
 make $MAKEFLAGS
 sudo make install
 
+cd $VS_INSTALL_DIR
 git -C vapoursynth pull || git clone https://github.com/vapoursynth/vapoursynth.git
 cd vapoursynth
 ./autogen.sh
