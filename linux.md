@@ -76,3 +76,11 @@ Host *
 ```
 sudo apt-get install xauth
 ```
+
+## xargs
+
+### escape quote sign
+
+```
+find . -print0 -type f| xargs -0 ...
+```
