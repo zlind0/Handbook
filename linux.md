@@ -59,6 +59,17 @@ docker commit sharelatex sharelatex/sharelatex:with-texlive-full
 docker exec sharelatex /bin/bash -c "cd /var/www/sharelatex; grunt user:create-admin --email=example@example.com"
 ```
 
+# N
+
+## netstat
+
+### show listening 
+
+```
+sudo netstat -tunlp
+```
+
+
 # X
 
 ## X11
@@ -83,4 +94,5 @@ sudo apt-get install xauth
 
 ```
 find . -print0 -type f| xargs -0 ...
+find . -type f| xargs -d "\n"
 ```
