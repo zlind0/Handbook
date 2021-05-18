@@ -69,6 +69,34 @@ docker exec sharelatex /bin/bash -c "cd /var/www/sharelatex; grunt user:create-a
 sudo netstat -tunlp
 ```
 
+# T
+
+## tun2socks
+
+### use a linux server as gateway for all local devices
+
+[https://www.ghl.name/archives/how-to-use-tun2socks-to-set-up-global-proxy-on-linux.html]
+```
+# installation
+git clone https://github.com/ambrop72/badvpn.git
+cd badvpn/
+mkdir build
+cd build
+cmake ..
+make -j
+sudo make install
+
+# ip forwarding
+echo 1 > /proc/sys/net/ipv4/ip_forward
+ip tuntap add dev tun2 mode tun
+ifconfig tun2 192.168.168.0/24 netmask 255.255.255.0
+route add default gw 192.168.168.2
+iptables -t nat -A POSTROUTING ! -d 192.168.123.0/24 -o tun2 -j MASQUERADE
+
+# tun2socks launch
+badvpn-tun2socks --netif-ipaddr 192.168.168.2 --netif-netmask 255.255.255.0 --socks-server-addr "192.168.123.100:7890" --tundev "tun2" --socks5-udp --udpgw-transparent-dns
+```
+
 
 # X
 
