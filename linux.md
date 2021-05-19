@@ -153,6 +153,8 @@ sudo mv *.moon moons.d
 sudo systemctl restart zerotier-one
 ```
 
+## Client join network
+
 ```
 curl -s https://install.zerotier.com/ | sudo bash
 sudo systemctl start zerotier-one.service
