@@ -130,3 +130,34 @@ sudo apt-get install xauth
 find . -print0 -type f| xargs -0 ...
 find . -type f| xargs -d "\n"
 ```
+
+# Z
+
+## ZeroTier
+
+## Moon server
+
+```
+curl -s https://install.zerotier.com/ | sudo bash
+sudo systemctl start zerotier-one.service
+sudo systemctl enable zerotier-one.service
+sudo zerotier-cli join $NETWORK_ID
+
+cd /var/lib/zerotier-one
+sudo zerotier-idtool initmoon identity.public |sudo tee moon.json
+sudo sed -i 's/"stableEndpoints": \[\]/"stableEndpoints": ["0.0.0.0\/9993"]/g' moon.json
+zerotier-idtool genmoon moon.json
+
+sudo mkdir moons.d
+sudo mv *.moon moons.d 
+sudo systemctl restart zerotier-one
+```
+
+```
+curl -s https://install.zerotier.com/ | sudo bash
+sudo systemctl start zerotier-one.service
+sudo systemctl enable zerotier-one.service
+sudo zerotier-cli join $NETWORD_ID
+sudo zerotier-cli orbit $MOON_ID $MOON_ID
+sudo zerotier-cli listpeers
+```
