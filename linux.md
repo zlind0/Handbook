@@ -14,7 +14,20 @@ scripts/install-sdk.sh
 forever start ~/c9sdk/server.js -w ~/ --auth user:pass --collab -l 8181
 ```
 
-# D
+# I
+
+## iptables
+
+### OpenWRT iptables open port
+
+```
+for port in 22 440 441 442 443 444 39186 39185 9993; do
+  iptables -A INPUT -p  tcp --dport $port -j ACCEPT
+  iptables -A OUTPUT -p tcp --dport $port -j ACCEPT
+  iptables -A INPUT -p  udp --dport $port -j ACCEPT
+  iptables -A OUTPUT -p udp --dport $port -j ACCEPT
+done
+```
 
 # L
 ## Latex-texlive
