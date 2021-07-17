@@ -82,6 +82,20 @@ docker exec sharelatex /bin/bash -c "cd /var/www/sharelatex; grunt user:create-a
 sudo netstat -tunlp
 ```
 
+# P
+
+## proxychains-ng
+
+```
+git clone https://github.com/rofl0r/proxychains-ng
+cd proxychains-ng
+./configure --prefix=/usr --sysconfdir=/etc
+make 
+make install
+make install-config
+cd .. && rm -rf proxychains-ng
+```
+
 ### show gateway
 
 ```
