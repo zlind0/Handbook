@@ -1,4 +1,11 @@
 # C
+
+## Certbot
+
+```
+certbot -d xxx.com --manual --preferred-challenges dns certonly
+```
+
 ## Cloud 9
 ### install
 ```
