@@ -21,6 +21,14 @@ scripts/install-sdk.sh
 forever start ~/c9sdk/server.js -w ~/ --auth user:pass --collab -l 8181
 ```
 
+# E
+
+## epel-release
+
+```
+dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm -y
+```
+
 # I
 
 ## iptables
