@@ -109,6 +109,12 @@ make
 make install
 make install-config
 cd .. && rm -rf proxychains-ng
+cat << ! > /etc/proxychains.conf
+strict_chain
+proxy_dns
+[ProxyList]
+socks5 127.0.0.1 7890
+!
 ```
 
 # Q
