@@ -168,6 +168,16 @@ iptables -t nat -A POSTROUTING ! -d 192.168.123.0/24 -o tun2 -j MASQUERADE
 badvpn-tun2socks --netif-ipaddr 192.168.168.2 --netif-netmask 255.255.255.0 --socks-server-addr "192.168.123.100:7890" --tundev "tun2" --socks5-udp --udpgw-transparent-dns
 ```
 
+# V
+
+## VNC Server (X Windows)
+
+```
+yum install @GNOME gdm gcr tigervnc-server
+vncpasswd
+vncserver
+```
+
 
 # X
 
