@@ -89,6 +89,22 @@ docker exec sharelatex /bin/bash -c "cd /var/www/sharelatex; grunt user:create-a
 
 # N
 
+## nginx
+
+### TCP forwarding
+
+```
+stream {
+        upstream srv {
+                server 1.1.1.1:22;
+        }
+        server {
+                listen 10022;
+                proxy_pass srv;
+        }
+}
+```
+
 ## netstat
 
 ### show listening 
