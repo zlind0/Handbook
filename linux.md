@@ -139,6 +139,7 @@ socks5 127.0.0.1 7890
 
 ### Build
 
+```
 wget https://download.qemu.org/qemu-6.1.0-rc0.tar.xz                                                        
 tar -xaf qemu-6.1.0-rc0.tar.xz
 cd qemu-6.1.0-rc0
@@ -146,15 +147,17 @@ yum install ninja-build glib2-devel bzip2 pixman-devel zlib-devel
 ./configure
 make -j
 make install
+```
 
 ### Run x86_64 machine
 
+```
 qemu-system-x86_64 \
     -nographic \
     -smp cores=6 \
     -m 4096 \
     -drive file=$PWD/Disk.qcow2,if=virtio,cache=writethrough
-
+```
 
 # T
 
