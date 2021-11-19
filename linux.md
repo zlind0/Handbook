@@ -44,6 +44,15 @@ for port in 22 440 441 442 443 444 39186 39185 9993; do
 done
 ```
 
+### NAT rules for virsh
+
+```
+iptables -t nat -A POSTROUTING -s 192.168.122.0/24 ! -d 192.168.122.0/24 -p tcp -j MASQUERADE --to-ports 1024-65535
+iptables -t nat -A POSTROUTING -s 192.168.122.0/24 ! -d 192.168.122.0/24 -p udp -j MASQUERADE --to-ports 1024-65535
+iptables -t nat -A POSTROUTING -s 192.168.122.0/24 ! -d 192.168.122.0/24 -j MASQUERADE
+iptables -t nat -A POSTROUTING -s 192.168.122.0/24 -o eth0 -j SNAT --to-source 192.168.122.1
+```
+
 # L
 ## Latex-texlive
 
