@@ -29,6 +29,17 @@ forever start ~/c9sdk/server.js -w ~/ --auth user:pass --collab -l 8181
 dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm -y
 ```
 
+# G
+
+## Gateway update to /etc/hosts (BSD sed)
+
+```
+function refresh_gateway {
+  sudo sed -i '' '/gateway/d' /etc/hosts
+  echo $(netstat -rn | awk '/default/ {print $2}'| head -n1) "gateway" | sudo tee -a /etc/hosts
+}
+```
+
 # I
 
 ## iptables
