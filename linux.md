@@ -21,6 +21,35 @@ scripts/install-sdk.sh
 forever start ~/c9sdk/server.js -w ~/ --auth user:pass --collab -l 8181
 ```
 
+# D
+
+## danted
+
+```
+logoutput: /var/log/socks.log
+
+# The listening network interface or address.
+internal: 0.0.0.0 port=10800
+
+# The proxying network interface or address.
+external: eth0
+
+# socks-rules determine what is proxied through the external interface.
+socksmethod: username
+
+# client-rules determine who can connect to the internal interface.
+clientmethod: none
+
+client pass {
+        from: 0.0.0.0/0 port 1-65535 to: 0.0.0.0/0
+        log: connect disconnect error
+}
+pass {
+        from: 0.0.0.0/0 to: 0.0.0.0/0
+        protocol: tcp udp
+}
+```
+
 # E
 
 ## epel-release
