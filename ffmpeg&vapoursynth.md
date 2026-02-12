@@ -1,5 +1,9 @@
 # ffmpeg (PTH Standard)
 
+## x265 (Apple)
+
+ffmpeg -i $SRC -pix_fmt yuv420p10le -c:v libx265 -profile:v main10 -tag:v hvc1 -preset slower -x265-params "crf=20.0:qcomp=0.8:aq-mode=3:aq-strength=0.8:pools=36:numa=48:rd=4:psy-rd=2.0:psy-rdoq=1.0:rdoq-level=2:deblock=-1,-1:cbqpoffs=-1:crqpoffs=-3:ctu=32:qg-size=8:no-sao=1:no-sao-non-deblock=1:selective-sao=0:tu-intra-depth=4:tu-inter-depth=4:no-opt-qp-pps=1:no-opt-ref-list-length-pps=1:aud=1:repeat-headers=1:me=3:subme=5:merange=48:b-intra=1:limit-tu=0:no-rect=1:no-amp=1:no-open-gop=1:keyint=240:min-keyint=1:bframes=8:max-merge=4:ref=4:weightb=1:rc-lookahead=72:scenecut=40:no-strong-intra-smoothing=1:vbv-bufsize=160000:vbv-maxrate=160000:input-depth=10"
+
 ## x264 (DTS-MA -> DTS)
 
 ```
